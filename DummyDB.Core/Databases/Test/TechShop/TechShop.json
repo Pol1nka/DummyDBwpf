@@ -1,0 +1,30 @@
+{
+  "name": "TechShop",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "isPrimary": true
+    },
+    {
+      "name": "techname",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "price",
+      "type": "int",
+      "isPrimary": false
+    },
+    {
+      "name": "paymenttype",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "purchasedate",
+      "type": "dateTime",
+      "isPrimary": false
+    }
+  ]
+}

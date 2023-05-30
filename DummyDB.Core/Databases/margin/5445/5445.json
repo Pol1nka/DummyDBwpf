@@ -1,0 +1,15 @@
+{
+  "name": "5445",
+  "columns": [
+    {
+      "name": "if",
+      "type": "int",
+      "IsPrimary": true
+    },
+    {
+      "name": "asd",
+      "type": "datеTime",
+      "IsPrimary": false
+    }
+  ]
+}

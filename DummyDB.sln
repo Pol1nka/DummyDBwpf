@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyDB.Console", "DummyDB.Console\DummyDB.Console.csproj", "{E8894FF5-7FD5-4918-8AA1-E9B606F3A24F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyDB.Core", "DummyDB.Core\DummyDB.Core.csproj", "{34B5C7D6-C46C-4508-AFB2-42254280904B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyDB.Desktop", "DummyDB.Desktop\DummyDB.Desktop.csproj", "{41CA9FB6-CDA7-4F5B-93AB-CF4B69C1DBFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8894FF5-7FD5-4918-8AA1-E9B606F3A24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8894FF5-7FD5-4918-8AA1-E9B606F3A24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8894FF5-7FD5-4918-8AA1-E9B606F3A24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8894FF5-7FD5-4918-8AA1-E9B606F3A24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B5C7D6-C46C-4508-AFB2-42254280904B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B5C7D6-C46C-4508-AFB2-42254280904B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B5C7D6-C46C-4508-AFB2-42254280904B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B5C7D6-C46C-4508-AFB2-42254280904B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CA9FB6-CDA7-4F5B-93AB-CF4B69C1DBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CA9FB6-CDA7-4F5B-93AB-CF4B69C1DBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CA9FB6-CDA7-4F5B-93AB-CF4B69C1DBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CA9FB6-CDA7-4F5B-93AB-CF4B69C1DBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+{
+  "name": "table",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "IsPrimary": true
+    },
+    {
+      "name": "dasd",
+      "type": "string",
+      "IsPrimary": false
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+<Window x:Class="DummyDB.Desktop.Views.Forms.TableCreatingForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Title="TableCreatingWindow"
+        Height="450" 
+        Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F2ECFC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="380"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Line
+            Grid.Row="0"
+            X1="300" Y1="0"
+            X2="300" Y2="450"
+            Stroke="Black"
+            StrokeThickness="2"/>
+        <Line
+            Grid.Row="1"
+            X1="300" Y1="0"
+            X2="300" Y2="450"
+            Stroke="Black"
+            StrokeThickness="2"/>
+        
+        <TextBlock
+            Text="Название БД"
+            Margin="5 0 0 0"/>
+        <TextBlock
+            Text="Название таблицы"
+            Margin="165 0 0 0"/>
+        <StackPanel
+            Grid.Row="0"
+            Margin="0 20 0 0"
+            Orientation="Horizontal"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left">
+            <ComboBox
+                Name="DatabaseName"
+                Width="150"
+                Height="30"
+                Margin="5 0 10 0"/>
+            <TextBox
+                Name="TableName"
+                Height="30"
+                Width="130"/>
+        </StackPanel>
+        
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left">
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock
+                    Text="Name"
+                    Margin="5 0 0 0"/>
+                <TextBlock
+                    Text="Type"
+                    Margin="60 0 5 0"/>
+                <TextBlock
+                    Margin="40 0 0 0"
+                    Text="IsPrimary"/>
+            </StackPanel>
+            <StackPanel
+                Name="Columns"
+                Width="300"/>
+        </StackPanel>
+        
+        <Button
+            Grid.Column="0"
+            Grid.Row="1"
+            Height="30"
+            Width="120"
+            Content="Добавить столбец"
+            Command="{Binding AddColumnCommand}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <Button
+            Grid.Column="1"
+            Grid.Row="1"
+            Height="30"
+            Width="120"
+            Content="Сохранить"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Command="{Binding SaveTableCommand}"/>
+    </Grid>
+</Window>

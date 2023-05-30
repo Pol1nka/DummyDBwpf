@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "columns": [
+    {
+      "name": "123",
+      "type": "float",
+      "IsPrimary": true
+    },
+    {
+      "name": "123",
+      "type": "int",
+      "IsPrimary": false
+    }
+  ]
+}

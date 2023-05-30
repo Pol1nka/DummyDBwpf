@@ -1,0 +1,15 @@
+{
+  "name": "тестик",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "IsPrimary": true
+    },
+    {
+      "name": "nameeeee",
+      "type": "string",
+      "IsPrimary": false
+    }
+  ]
+}
