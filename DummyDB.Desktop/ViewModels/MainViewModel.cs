@@ -80,7 +80,7 @@ public class MainViewModel : INotifyPropertyChanged
         }
         else
         {
-            MessageBox.Show("Таблицу выбери, заебал");
+            MessageBox.Show("Выберите таблицу");
         }
     }
 
@@ -94,7 +94,7 @@ public class MainViewModel : INotifyPropertyChanged
         }
         else
         {
-            MessageBox.Show("No-таблица = no-метаданные");
+            MessageBox.Show("Таблица не выбрана");
         }
     }
 
