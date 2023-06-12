@@ -46,3 +46,15 @@ D:\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.dll
 D:\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\refint\DummyDB.Core.dll
 D:\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.pdb
 D:\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\ref\DummyDB.Core.dll
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\bin\Debug\net7.0\DummyDB.Core.deps.json
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\bin\Debug\net7.0\DummyDB.Core.dll
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\bin\Debug\net7.0\DummyDB.Core.pdb
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.csproj.AssemblyReference.cache
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.AssemblyInfoInputs.cache
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.AssemblyInfo.cs
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.csproj.CoreCompileInputs.cache
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.dll
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\refint\DummyDB.Core.dll
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\DummyDB.Core.pdb
+C:\Users\polin\RiderProjects\DummyDBFwpf\DummyDB.Core\obj\Debug\net7.0\ref\DummyDB.Core.dll

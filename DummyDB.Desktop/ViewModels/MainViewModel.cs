@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using DummyDB.Core.Models;
 using DummyDB.Desktop.Views;
 using DummyDB.Desktop.Views.Forms;
 using DummyDB.Desktop.Views.Pages;
@@ -15,23 +15,23 @@ public class MainViewModel : INotifyPropertyChanged
 {
     private const string DatabasesFolderPath = "../../../../DummyDB.Core/Databases";
     private readonly MainWindow _window;
-    private string _selectedDatabase = null!;
+    private Database _selectedDatabase = null!;
 
-    public string SelectedDatabase
+    public Database SelectedDatabase
     {
         get => _selectedDatabase;
         set
         {
             if (_selectedDatabase == value) return;
             _selectedDatabase = value;
-            _window.TableChoosingBox.ItemsSource = new ObservableCollection<string>(InitTables());
-            if (PropertyChanged != null)
+            _window.TableChoosingBox.ItemsSource = new ObservableCollection<Table>(_selectedDatabase.Tables);
+            if (PropertyChanged is not null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedDatabase"));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedDatabase)));
             }
         }
     }
-    public ObservableCollection<string> DatabasesNames { get; set; }
+    public ObservableCollection<Database> Databases { get; set; } = new (InitDatabases());
     public ICommand ShowTablePageCommand { get; init; }
     public ICommand ShowMetaDataCommand { get; init; }
     public ICommand ShowDbsMetaDataCommand { get; init; }
@@ -44,7 +44,6 @@ public class MainViewModel : INotifyPropertyChanged
     public MainViewModel(MainWindow window)
     {
         _window = window;
-        DatabasesNames = new ObservableCollection<string>(InitDatabases());
         ShowTablePageCommand = new RelayCommand(ShowTablePage);
         ShowMetaDataCommand = new RelayCommand(ShowMetaData);
         ShowDbsMetaDataCommand = new RelayCommand(ShowDbsMetaData);
@@ -55,46 +54,42 @@ public class MainViewModel : INotifyPropertyChanged
         OpenChangingMenuCommand = new RelayCommand(OpenChangingMenu);
     }
 
-    private IEnumerable<string> InitDatabases()
+    private static IEnumerable<Database> InitDatabases()
     {
         var databasesFolder = new DirectoryInfo(DatabasesFolderPath);
-        var databases = databasesFolder.GetDirectories();
-        return databases
-            .Select(d => d.Name);
-    }
+        var databases = new List<Database>();
+        foreach (var database in databasesFolder.GetDirectories())
+        {
+            var db = Database.GetFromDirectoryInfo(database);
+            databases.Add(db);
+        }
 
-    private IEnumerable<string> InitTables()
-    {
-        var database = new DirectoryInfo($"{DatabasesFolderPath}//{_selectedDatabase}");
-        var tables = database.GetDirectories();
-        return tables
-            .Where(table => table.GetFiles().Length == 2)
-            .Select(table => table.Name);
+        return databases;
     }
     
     private void ShowTablePage(object? o)
     {
-        if (_window.TableChoosingBox.SelectedItem is string tableName)
+        if (_window.TableChoosingBox.SelectedItem is Table table)
         {
-            _window.MainFrame.Content = new TablePage(tableName, _selectedDatabase);
+            _window.MainFrame.Content = new TablePage(_selectedDatabase, table);
         }
         else
         {
-            MessageBox.Show("Таблицу выбери, заебал");
+            MessageBox.Show("Пожалуйста, выберите таблицу.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
     private void ShowMetaData(object? o)
     {
-        if (_window.MainFrame.Content is TablePage)
+        if (_window.TableChoosingBox.SelectedItem is not null)
         {
-            var chosenTable = _window.TableChoosingBox.SelectedItem as string;
-            var metaDataWindow = new TableMetaDataWindow(chosenTable!, _selectedDatabase);
+            var chosenTable = _window.TableChoosingBox.SelectedItem as Table;
+            var metaDataWindow = new TableMetaDataWindow(chosenTable!.Schema);
             metaDataWindow.Show();
         }
         else
         {
-            MessageBox.Show("No-таблица = no-метаданные");
+            MessageBox.Show("No-таблица = no-метаданные", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -112,26 +107,26 @@ public class MainViewModel : INotifyPropertyChanged
 
     private void CreateTable(object? o)
     {
-        var window = new TableCreatingForm(DatabasesNames);
+        var window = new TableCreatingForm(Databases);
         window.Show();
     }
 
     private void RedactDb(object? o)
     {
-        if (_selectedDatabase != null)
+        if (_window.DatabaseChoosingBox.SelectedItem is not null)
         {
             var window = new DbRedactingWindow(_selectedDatabase);
             window.Show();
         }
         else
         {
-            MessageBox.Show("Пожалуйста, выберите Базу данных");
+            MessageBox.Show("Пожалуйста, выберите Базу данных", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
     private void Refresh(object? o)
     {
-        _window.DatabaseChoosingBox.ItemsSource = new ObservableCollection<string>(InitDatabases());
+        _window.DatabaseChoosingBox.ItemsSource = new ObservableCollection<Database>(InitDatabases());
         _window.DatabaseChoosingBox.SelectedItem = null;
         _window.TableChoosingBox.SelectedItem = null;
         _window.MainFrame.Content = null;
@@ -142,13 +137,13 @@ public class MainViewModel : INotifyPropertyChanged
         if (_window.TableChoosingBox.SelectedItem is not null)
         {
             var window =
-                new TableRedactingWindow((_window.TableChoosingBox.SelectedItem as string)!,
+                new TableRedactingWindow((_window.TableChoosingBox.SelectedItem as Table)!,
                     _selectedDatabase);
             window.Show();
         }
         else
         {
-            MessageBox.Show("Пожалуйста, выберите таблицу.");
+            MessageBox.Show("Пожалуйста, выберите таблицу.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
     

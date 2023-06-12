@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,20 +9,20 @@ using DummyDB.Core.Models;
 using DummyDB.Core.Services;
 using DummyDB.Desktop.Views.Forms;
 
-namespace DummyDB.Desktop.ViewModels;
+namespace DummyDB.Desktop.ViewModels.FormsViewModels;
 
 public class TableCreatingWindowViewModel
 {
     private const string DatabasesFolderPath = "../../../../DummyDb.Core/Databases";
     private readonly TableCreatingForm _form;
-    private readonly string[] _columnTypes = { "int", "float", "string", "datеTime", "bool" };
+    private readonly string[] _columnTypes = { "int", "float", "string", "dataTime", "bool" };
     public ICommand AddColumnCommand { get; init; }
     public ICommand SaveTableCommand { get; init; }
 
-    public TableCreatingWindowViewModel(TableCreatingForm form, IEnumerable<string> databases)
+    public TableCreatingWindowViewModel(TableCreatingForm form, IEnumerable<Database> databases)
     {
         _form = form;
-        _form.DatabaseName.ItemsSource = databases;
+        _form.DatabaseName.ItemsSource = databases.Select(db => db.Name).ToList();
         AddColumnCommand = new RelayCommand(AddColumn);
         SaveTableCommand = new RelayCommand(SaveTable);
     }
@@ -32,8 +33,8 @@ public class TableCreatingWindowViewModel
         {
             Orientation = Orientation.Horizontal
         };
-        column.Children.Add(new TextBox { Name = "ColumnName", Width = 100});
-        column.Children.Add(new ComboBox { Name = "ColumnType", ItemsSource = _columnTypes,Width = 80});
+        column.Children.Add(new TextBox { Name = "ColumnName", MinWidth = 40 });
+        column.Children.Add(new ComboBox { Name = "ColumnType", ItemsSource = _columnTypes });
         column.Children.Add(new CheckBox { Name = "IsPrimary", IsChecked = false });
         _form.Columns.Children.Add(column);
     }
@@ -43,7 +44,8 @@ public class TableCreatingWindowViewModel
         var flag = CheckColumns();
         if (!flag)
         {
-            MessageBox.Show("Не удаётся сохранить. Видимо, где-то ошибка.");
+            MessageBox.Show("Не удаётся сохранить. Видимо, где-то ошибка.", "Error", MessageBoxButton.OK,
+                MessageBoxImage.Error);
             return;
         }
 
@@ -58,7 +60,7 @@ public class TableCreatingWindowViewModel
             var column = new Column
             {
                 Name = (columnView!.Children[0] as TextBox)!.Text,
-                Type = (columnView.Children[1] as ComboBox)!.SelectedItem as string,
+                Type = ((columnView.Children[1] as ComboBox)!.SelectedItem as string)!,
                 IsPrimary = (columnView.Children[2] as CheckBox)!.IsChecked ?? false
             };
             schema.Columns.Add(column);
@@ -70,22 +72,12 @@ public class TableCreatingWindowViewModel
     {
         foreach (var element in _form.Columns.Children)
         {
-            if (element is StackPanel column)
-            {
-                if (column.Children[0] is TextBox name && column.Children[1] is ComboBox type && column.Children[2] is CheckBox check)
-                {
-                    var flag = name.Text != "" && type.SelectedItem is not null && check.IsChecked is not null;
-                    if (!flag)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
+            var column = element as StackPanel;
+            var name = column!.Children[0] as TextBox;
+            var type = column.Children[1] as ComboBox;
+            var check = column.Children[2] as CheckBox;
+            var flag = name!.Text != "" && type!.SelectedItem is not null && check!.IsChecked is not null;
+            if (!flag)
             {
                 return false;
             }
@@ -107,12 +99,12 @@ public class TableCreatingWindowViewModel
             Directory.CreateDirectory(newTablePath);
             schema.ToJsonFile((_form.DatabaseName.SelectedItem as string)!);
             var table = new Table(schema.Name, schema);
-            CsvWritingService.CreateCsv(table, (_form.DatabaseName.SelectedItem as string)!);
+            CsvWritingService.WriteInCsv(table, (_form.DatabaseName.SelectedItem as string)!);
             _form.Close();
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

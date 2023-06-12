@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj": {}
+    "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj": {}
   },
   "projects": {
-    "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj": {
+    "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj",
+        "projectUniqueName": "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj",
         "projectName": "DummyDB.Core",
-        "projectPath": "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj",
+        "projectPath": "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\DummyDB.Core.csproj",
         "packagesPath": "C:\\Users\\polin\\.nuget\\packages\\",
-        "outputPath": "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\obj\\",
+        "outputPath": "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

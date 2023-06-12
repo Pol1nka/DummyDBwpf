@@ -6,14 +6,14 @@
       mc:Ignorable="d"
       Title="TablePage"
       Height="450"
-      Width="1000" 
-      ShowsNavigationUI="False"
-      Background="#F2ECFC">
+      Width="800" 
+      ShowsNavigationUI="False">
     <Grid>
         <DataGrid
             CanUserAddRows="False"
             CanUserDeleteRows="False"
             Name = "Table"
-            AutoGenerateColumns="False"/>
+            AutoGenerateColumns="False"
+            SelectionUnit="Cell"/>
     </Grid>
 </Page>

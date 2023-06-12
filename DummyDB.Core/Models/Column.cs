@@ -5,11 +5,14 @@ namespace DummyDB.Core.Models;
 public class Column
 {
     [JsonProperty(PropertyName = "name")]
-    public string? Name { get; set; }
+    public string Name { get; set; } = "";
     
     [JsonProperty(PropertyName = "type")]
-    public string? Type { get; set; }
+    public string Type { get; set; } = "";
 
     [JsonProperty(PropertyName = "IsPrimary")]
     public bool IsPrimary { get; set; }
+
+    [JsonProperty(PropertyName = "referencedTable")]
+    public string ReferencedTable { get; set; } = "";
 }

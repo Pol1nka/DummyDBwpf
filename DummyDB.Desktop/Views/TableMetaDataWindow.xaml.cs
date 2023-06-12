@@ -1,13 +1,13 @@
-using System.Windows;
+using DummyDB.Core.Models;
 using DummyDB.Desktop.ViewModels;
 
 namespace DummyDB.Desktop.Views;
 
-public partial class TableMetaDataWindow : Window
+public partial class TableMetaDataWindow
 {
-    public TableMetaDataWindow(string schemaName, string dbName)
+    public TableMetaDataWindow(Schema schema)
     {
         InitializeComponent();
-        DataContext = new TableMetaDataWindowViewModel(this, schemaName, dbName);
+        DataContext = new TableMetaDataWindowViewModel(this, schema);
     }
 }

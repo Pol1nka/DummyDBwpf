@@ -1,13 +1,13 @@
-using System.Windows;
+using DummyDB.Core.Models;
 using DummyDB.Desktop.ViewModels;
 
 namespace DummyDB.Desktop.Views;
 
-public partial class DbRedactingWindow : Window
+public partial class DbRedactingWindow
 {
-    public DbRedactingWindow(string databases)
+    public DbRedactingWindow(Database database)
     {
         InitializeComponent();
-        DataContext = new DbRedactingWindowViewModel(this, databases);
+        DataContext = new DbRedactingWindowViewModel(this, database);
     }
 }

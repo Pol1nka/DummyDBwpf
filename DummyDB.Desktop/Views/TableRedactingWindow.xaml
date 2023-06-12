@@ -6,15 +6,16 @@
         mc:Ignorable="d"
         Title="Редактирование выбранной таблицы" 
         Height="450" 
-        Width="1050"
+        Width="1150"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Background="#F2ECFC">
         <StackPanel
                 Orientation="Horizontal">
                 <Border
                         Name="SchemaRedactingPanel"
                         Height="450"
-                        Width="300"
+                        Width="400"
                         Background="#F2ECFC"
                         Visibility="Visible">
                         <StackPanel>
@@ -41,7 +42,7 @@
                                 />
                                 <StackPanel
                                         Name="Columns"
-                                        Width="300"
+                                        Width="400"
                                         HorizontalAlignment="Left"/>
                                 <Button
                                         Width="100"

@@ -1,9 +1,10 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using DummyDB.Core.Models;
 using DummyDB.Desktop.Views.Forms;
 
-namespace DummyDB.Desktop.ViewModels;
+namespace DummyDB.Desktop.ViewModels.FormsViewModels;
 
 public class DatabaseCreatingViewModel
 {
@@ -24,12 +25,15 @@ public class DatabaseCreatingViewModel
         var title = _form.DatabaseName.Text;
         if (Directory.Exists($"{DatabasesFolderPath}/{title}"))
         {
-            MessageBox.Show("Такая БД уже существует. Пожалуйста, измените название.");
+            MessageBox.Show("Такая БД уже существует. Пожалуйста, измените название.", "Error", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
         }
         else
         {
-            Directory.CreateDirectory($"{DatabasesFolderPath}/{title}");
-            _mainViewModel.DatabasesNames.Add(title);
+            var directory = new DirectoryInfo($"{DatabasesFolderPath}/{title}");
+            directory.Create();
+            var db = Database.GetFromDirectoryInfo(directory);
+            _mainViewModel.Databases.Add(db);
             _form.Close();
         }
     }

@@ -4,28 +4,9 @@ namespace DummyDB.Core.Services;
 
 public static class CsvReadingService
 {
-    public static string[]? ReadFromCsv(string dataFilePath, string schemaFilePath)
+    public static string[] ReadFromCsv(string dataFilePath, Schema schema, string dbName)
     {
         var dataFromCsv = File.ReadAllLines(dataFilePath);
-        var schema = Schema.GetFromJsonFile(schemaFilePath);
-
-        try
-        {
-            return JsonValidationService.CheckBySchema(schema!, dataFromCsv) ? dataFromCsv.Skip(1).ToArray() : throw new FormatException("Невозможно считать данные из файла, так как они не соответствуют схеме таблицы.");
-        }
-        catch (Exception ex)
-        {
-            WriteExceptionMessage(ex);
-        }
-
-        return null;
-    }
-
-    private static void WriteExceptionMessage(Exception ex)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Clear();
-        Console.WriteLine($"Ошибка: {ex.Message}");
-        Console.ResetColor();
+        return JsonValidationService.CheckBySchema(schema, dataFromCsv, dbName) ? dataFromCsv[1..] : throw new FormatException("Невозможно считать данные из файла, так как они не соответствуют схеме таблицы.");
     }
 }

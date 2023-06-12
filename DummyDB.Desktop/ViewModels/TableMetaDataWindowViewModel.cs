@@ -8,22 +8,21 @@ namespace DummyDB.Desktop.ViewModels;
 
 public class TableMetaDataWindowViewModel
 {
-    private const string DatabasesFolderPath = "../../../../DummyDb.Core/Databases";
     private readonly Schema _schema;
     
     public List<TreeViewItem> ColumnsData { get; init; }
 
-    public TableMetaDataWindowViewModel(TableMetaDataWindow window, string schemaName, string dbName)
+    public TableMetaDataWindowViewModel(TableMetaDataWindow window, Schema schema)
     {
-        window.TableName.Text = schemaName;
-        _schema = Schema.GetFromJsonFile($"{DatabasesFolderPath}//{dbName}//{schemaName}//{schemaName}.json")!;
+        window.TableName.Text = schema.Name;
+        _schema = schema;
         ColumnsData = InitMetaDataView();
     }
 
     private List<TreeViewItem> InitMetaDataView()
     {
         return _schema.Columns
-            .Select(column => new TreeViewItem { Header = $"name: {column.Name}, type: {column.Type}, isPrimary: {column.IsPrimary}" })
+            .Select(column => new TreeViewItem { Header = $"name: {column.Name}, type: {column.Type}, isPrimary: {column.IsPrimary}, referencedTable: {column.ReferencedTable}" })
             .ToList();
     }
 }

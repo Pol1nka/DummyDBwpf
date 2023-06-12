@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Amr/4WBQ10i/C+mTI97YvAP3jxeaHXkA3z+niFrK3eX/ctti7P1yTQfNm9Bq3TcvobR5QkLhylh529sNuYuAZQ==",
+  "dgSpecHash": "j/idNMPQwu5B1WAoy/Oh7ab/I5LTSiYJTfifo4flP3egkw7H8JgxLWBiyBavv78RAfJT53wyuWShJNDdBd2Exg==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\DummyDBFwpf\\DummyDB.Console\\DummyDB.Console.csproj",
+  "projectFilePath": "C:\\Users\\polin\\RiderProjects\\DummyDBFwpf\\DummyDB.Console\\DummyDB.Console.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\polin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

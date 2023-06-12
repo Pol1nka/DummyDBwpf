@@ -37,7 +37,7 @@ public class DbMetaDataViewModel
     private static IEnumerable<TreeViewItem> InitColumns(string name, DirectoryInfo database)
     {
         var schema = Schema.GetFromJsonFile($"{DatabasesFolderPath}//{database.Name}//{name}//{name}.json") 
-                     ?? throw new ArgumentException("Данной таблицы не существует");
+                     ?? throw new ArgumentException("Нет такой таблицы");
         return schema.Columns
             .Select(column => new TreeViewItem { Header = $"Name: {column.Name}, Type: {column.Type}, IsPrimary: {column.IsPrimary}" })
             .ToList();

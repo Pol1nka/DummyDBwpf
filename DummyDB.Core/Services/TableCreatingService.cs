@@ -2,15 +2,15 @@ using DummyDB.Core.Models;
 
 namespace DummyDB.Core.Services;
 
-public class TableCreatingService
+public static class TableCreatingService
 {
     public static Table CreateTable(string tableName, Schema schema, string[] data)
     {
         var result = new Table(tableName, schema);
-        foreach (var t in data)
+        foreach (var str in data)
         {
             var row = new Row();
-            var rowElements = t.Split(';');
+            var rowElements = str.Split(';');
             for (var j = 0; j < rowElements.Length; j++)
             {
                 row.Elements.Add(schema.Columns[j], GetData(rowElements[j], schema.Columns[j]));
@@ -23,6 +23,16 @@ public class TableCreatingService
 
     private static object GetData(string value, Column column)
     {
+        if (column.Type == "dateTime" && value == "")
+        {
+            return "";
+        }
+
+        if (column.Type == "float" && value == "")
+        {
+            return "";
+        }
+
         return column.Type switch
         {
             "int" => int.Parse(value),
