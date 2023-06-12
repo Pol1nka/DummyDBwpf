@@ -1,0 +1,23 @@
+{
+  "name": "testFK",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "IsPrimary": true,
+      "referencedTable": ""
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "IsPrimary": false,
+      "referencedTable": ""
+    },
+    {
+      "name": "count",
+      "type": "int",
+      "IsPrimary": false,
+      "referencedTable": "peace"
+    }
+  ]
+}

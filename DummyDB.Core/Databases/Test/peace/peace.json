@@ -1,0 +1,17 @@
+{
+  "name": "peace",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "IsPrimary": true,
+      "referencedTable": ""
+    },
+    {
+      "name": "FK",
+      "type": "int",
+      "IsPrimary": false,
+      "referencedTable": "testFK"
+    }
+  ]
+}

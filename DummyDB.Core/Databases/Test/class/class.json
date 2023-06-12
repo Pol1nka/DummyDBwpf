@@ -1,0 +1,40 @@
+{
+  "name": "class",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "IsPrimary": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "IsPrimary": false
+    },
+    {
+      "name": "sachet",
+      "type": "bool",
+      "IsPrimary": false
+    },
+    {
+      "name": "good",
+      "type": "string",
+      "IsPrimary": false
+    },
+    {
+      "name": "Done",
+      "type": "bool",
+      "IsPrimary": false
+    },
+    {
+      "name": "123",
+      "type": "bool",
+      "IsPrimary": false
+    },
+    {
+      "name": "test",
+      "type": "string",
+      "IsPrimary": false
+    }
+  ]
+}
